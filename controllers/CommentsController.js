@@ -33,3 +33,13 @@ export const getAllByPost = async (req, res) => {
     res.status(500).json({ message: 'Не удалось получить комментарии' });
   }
 };
+
+export const getAllComments = async (req, res) => {
+  try {
+    const comments = await CommentsModel.find().sort({ createdAt: -1 });
+    res.json(comments);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Не удалось получить комментарии' });
+  }
+};

@@ -91,6 +91,8 @@ app.patch(
 app.get('/posts/:id/comments', CommentsController.getAllByPost);
 // Создание комментария
 app.post('/comments', checkAuth, CommentsController.create);
+// Получение всех комментариев для всех постов
+app.get('/comments', CommentsController.getAllComments);
 
 app.listen(process.env.PORT || 4444, (err) => {
   if (err) {
